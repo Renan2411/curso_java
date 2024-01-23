@@ -14,7 +14,7 @@ public class Account {
     }
 
     public void withdraw(Double amount){
-        this.balance -= amount;
+        this.balance -= amount + 5.0;
     }
 
     public void deposit(Double amount){
