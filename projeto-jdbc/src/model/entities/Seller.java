@@ -13,29 +13,47 @@ public class Seller implements Serializable {
     private Double baseSalary;
     private Department department;
 
-    public Seller(Integer id, String name, String email, Date birthDate, Double baseSalary) {
+    public Seller(Integer id, String name, String email, Date birthDate, Double baseSalary, Department department) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.birthDate = birthDate;
         this.baseSalary = baseSalary;
+        this.department = department;
+    }
+
+    public Seller(String name, String email, Date birthDate, Double baseSalary, Department department) {
+        this.name = name;
+        this.email = email;
+        this.birthDate = birthDate;
+        this.baseSalary = baseSalary;
+        this.department = department;
+    }
+
+    @Override
+    public String toString() {
+        return "Seller{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", birthDate=" + birthDate +
+                ", baseSalary=" + baseSalary +
+                ", department=" + department +
+                '}';
     }
 
     @Override
     public boolean equals(Object object) {
         if (Objects.isNull(object) || object.getClass() != this.getClass()) return false;
-
         if (this != object) return true;
 
         Seller seller = (Seller) object;
-        return seller.getId().equals(this.getId()) &&
-                seller.getName().equalsIgnoreCase(this.getName())
-                && seller.getEmail().equalsIgnoreCase(this.getEmail());
+        return seller.getId().equals(this.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getId(), this.getName(), this.getEmail());
+        return Objects.hash(this.getId());
     }
 
     public Integer getId() {
@@ -76,5 +94,13 @@ public class Seller implements Serializable {
 
     public void setBaseSalary(Double baseSalary) {
         this.baseSalary = baseSalary;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }
